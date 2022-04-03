@@ -5,8 +5,36 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Expense tracker</title>
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css">
 </head>
 <body>
+  <nav class="navbar navbar-light bg-warning">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <i class="fas fa-dollar-sign"></i>
+        {{#if isAuthenticated}}{{ user.name }}
+        {{#if user.name}}的{{/if}}
+        {{/if}}
+        記帳本
+      </a>
+      <div class="text-left mt-2">
+        {{#if isAuthenticated}}
+        <a href="/record/new"><button class="btn btn-primary">新增餐廳</button></a>
+        <a href="/users/logout"><button class="btn btn-primary">LogOut</button></a>
+        {{else}}
+        <a href="/users/login"><button class="btn btn-light">LogIn</button></a>
+        {{/if}}
+      </div>
+    </div>
+  </nav>
+  
+  <div class="banner mb-3"></div>
+
+
   {{{ body }}}
+  
+  <script src="/javascripts/popper.js"></script>
+  <script src="/javascripts/bootstrap.js"></script>
 </body>
 </html>
