@@ -16,10 +16,14 @@ const recordSchema = new Schema({
   },
   userId:{
     type: String,
+    ref: 'User',
+    index: true,
     require: true
   },
   categoryId:{
     type: String,
+    ref: 'Category',
+    index: true,
     require: true
   }
 })
