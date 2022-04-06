@@ -13,6 +13,9 @@ app.set('view engine', 'hbs')
 app.get('/', (req, res) => {
   res.render('index')
 })
+app.get('/new', (req, res) => {
+  res.render('new')
+})
 
 app.listen(PORT, () => {
   console.log(`Express is listening on http://localhost:${PORT}`)
