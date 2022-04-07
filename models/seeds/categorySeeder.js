@@ -5,32 +5,31 @@ if (process.env.NODE_ENV !== 'production') {
 const Category = require('../category')
 const db = require('../../config/mongoose')
 
-const CATEGORYS = [
+const CATEGORIES = [
   {
     name: '家居物業',
-    image: "https://fontawesome.com/icons/home?style=solid"
+    icon: 'fa- solid fa - house'
   },
   {
     name: '交通出行',
-    image: "https://fontawesome.com/icons/shuttle-van?style=solid"
+    icon: 'fa- solid fa - van - shuttle'
   },
   {
     name: '休閒娛樂',
-    image: "https://fontawesome.com/icons/grin-beam?style=solid",
+    icon: 'fa-solid fa-face-grin-beam'
   },
   {
     name: '餐飲食品',
-    image: "https://fontawesome.com/icons/utensils?style=solid",
+    icon: 'fa-solid fa-utensils'
   },
   {
     name: '其他',
-    image: "https://fontawesome.com/icons/pen?style=solid"
+    icon: 'fa-solid fa-pen'
   }
 ]
 
 db.once('open', () => {
-  console.log('DB open')
-  Promise.all(Array.from(CATEGORYS, category => {
+  Promise.all(Array.from(CATEGORIES, category => {
     return Category.create(category)
   }))
   .catch(err => console.log('error', err))

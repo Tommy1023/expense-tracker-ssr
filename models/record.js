@@ -10,9 +10,9 @@ const recordSchema = new Schema({
     type: Number,
     require: true
   },
-  createAt: {
+  date: {
     type: Date,
-    default: Date.now
+    require: true
   },
   userId:{
     type: String,

@@ -11,7 +11,7 @@ const PORT = process.env.PORT
 
 app.use(express.static('public'))
 
-app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs'}))
+app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs'}))
 app.set('view engine', 'hbs')
 
 app.get('/', (req, res) => {
