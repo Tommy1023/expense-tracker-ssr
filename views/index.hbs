@@ -5,10 +5,10 @@
       <form action="/">
         <select class="form-select" aria-label="Default select example" oninput="submit()">
           <option selected>所有類別</option>
-          <option value="1">家居物業</option>
-          <option value="2">交通出行</option>
-          <option value="3">餐飲食品</option>
-          <option value="3">其他</option>
+          <option href="/sort/home" value="1">家居物業</option>
+          <option href="/sort/transport" value="2">交通出行</option>
+          <option href="/sort/food" value="3">餐飲食品</option>
+          <option href="/sort/other" value="4">其他</option>
         </select>
       </form>
     </div>
@@ -39,18 +39,19 @@
   </div>
 
   {{!-- record --}}
-  <div class="row mt-2">
+  {{#each renderRecords }}
+    <div class="row mt-2">
     <div class="col-8">
       <div class="row">
         <div class="col-2 d-flex align-items-center">
-          <i class="fa-solid fa-house"></i>
+          <i class="{{this.icon}} fa-2x"></i>
         </div>
         <div class="col-8">
-          <div class="col">午餐</div>
-          <div class="col">日期:2022/04/02</div>
+          <div class="col">{{this.name}}</div>
+          <div class="col date-text">{{this.date}}</div>
         </div>
         <div class="col-2 d-flex align-items-center">
-          <div class="col">150</div>
+          <div class="col">{{this.amount}}</div>
         </div>
       </div>
     </div>
@@ -63,4 +64,5 @@
       </div>
     </div>
   </div>
+  {{/each}}
 </div>

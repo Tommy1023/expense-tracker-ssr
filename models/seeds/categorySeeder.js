@@ -2,17 +2,17 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
-const Category = require('../category')
 const db = require('../../config/mongoose')
+const Category = require('../category')
 
 const CATEGORIES = [
   {
     name: '家居物業',
-    icon: 'fa- solid fa - house'
+    icon: 'fa-solid fa-house'
   },
   {
     name: '交通出行',
-    icon: 'fa- solid fa - van - shuttle'
+    icon: 'fa-solid fa-van-shuttle'
   },
   {
     name: '休閒娛樂',

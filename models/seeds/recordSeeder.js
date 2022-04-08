@@ -36,6 +36,7 @@ db.once('open', () => {
       .then(user => {
         return Promise.all(Array.from(seedUser.expenses, expense => {
           return Category.findOne({ name: expense.category })
+            .lean()
             .then(category => {
               expense.categoryId = category._id
               expense.userId = user._id
