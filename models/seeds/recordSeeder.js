@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs')
 const User = require('../user')
 const Category = require('../category')
 const Record = require('../record')
-const recordList = require('./records.json').records
+const recordList = require('../../records.json').records
 
 const SEED_USERS = [
   {
@@ -24,7 +24,7 @@ const SEED_USERS = [
 ]
 
 db.once('open', () => {
-  return Promise.all(Array.from(SEED_USERS, seedUser => {
+  Promise.all(Array.from(SEED_USERS, seedUser => {
     return bcrypt
       .genSalt(10)
       .then(salt => bcrypt.hash(seedUser.password, salt))
