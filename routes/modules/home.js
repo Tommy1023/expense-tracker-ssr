@@ -2,8 +2,6 @@ const express = require('express')
 const router = express.Router()
 const Record = require('../../models/record')
 const Category = require('../../models/category')
-const category = require('../../models/category')
-const { render } = require('express/lib/response')
 
 router.get('/', (req, res) => {
   Category.find()
@@ -30,7 +28,6 @@ router.get('/', (req, res) => {
     .catch(err => console.log('some error', err))
 })
 
-
 router.get('/sort/:sort', (req, res) => {
   const sort =req.params.sort
   Category.find()
@@ -55,6 +52,8 @@ router.get('/sort/:sort', (req, res) => {
     })
     .catch(err => console.log('some error', err))
 })
+
+
 
 
 module.exports = router

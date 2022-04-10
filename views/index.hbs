@@ -1,19 +1,28 @@
 <div class="container col-8">
-  {{!-- dropdown --}}
-  <div class="dropdown row mt-3">
-    <button class="col-8 btn btn-outline-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-      aria-expanded="false">
-      {{#if sort}}
-      {{ sort }}
-      {{else}}
-      請選擇類別
-      {{/if}}
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      {{#each categories}}
-      <li><a class="dropdown-item" href="/sort/{{this.name}}">{{this.name}}</a></li>
-      {{/each}}
-    </ul>
+  <div class="row">
+    <div class="col-8">
+      {{!-- dropdown --}}
+      <div class="dropdown row mt-3">
+        <button class="col-8 btn btn-outline-warning dropdown-toggle" type="button" id="dropdownMenuButton1"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          {{#if sort}}
+          {{ sort }}
+          {{else}}
+          請選擇類別
+          {{/if}}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          {{#each categories}}
+          <li><a class="dropdown-item" href="/sort/{{this.name}}">{{this.name}}</a></li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+    <div class="col-4">
+      <a href="/records/new">
+        <button class="btn btn-info mt-3">新增消費</button>
+      </a>
+    </div>
   </div>
   
   {{!-- totalAmount --}}
@@ -43,13 +52,13 @@
         </div>
       </div>
     </div>
-    <div class="col-4 d-flex justify-content-center">
-      <div class="btn-group mx-lg-2" role="group" aria-label="Basic outlined example">
-        <a href="/records/{{this._id}}/edit" type="button" class="btn btn-primary">編輯</a>
+    <div class="col-4 d-flex justify-content-center mt-1">
+      <div>
+        <a href="/records/{{this._id}}/edit" class="btn btn-primary">編輯</a>
       </div>
-      <form "/records/{{this._id}}/?_method=delete" method="post">
+      <form action="/records/{{this._id}}/?_method=delete" method="post">
         <div class="btn-group mx-lg-2" role="group" aria-label="Basic outlined example">
-          <a href="/records/delete" type="button" class="btn btn-danger">刪除</a>
+          <button type="button" class="btn btn-danger">刪除</button>
         </div>
       </form>
     </div>
