@@ -4,11 +4,13 @@ const Record = require('../../models/record')
 const Category = require('../../models/category')
 
 router.get('/', (req, res) => {
+  const userId = req.user._id
   Category.find()
   .lean()
   .then(categories => {
-    Record.find()
+    Record.find({userId})
     .lean()
+    .sort({date: 'asc', name: 'asc'})
     .then(records => {
       let renderRecords = []
       let totalAmount = 0
@@ -29,6 +31,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/sort/:sort', (req, res) => {
+  const userId = req.user._id
   const sort =req.params.sort
   Category.find()
     .lean()
@@ -39,7 +42,7 @@ router.get('/sort/:sort', (req, res) => {
           return selectedCategory = data
         }
       })
-      Record.find({ categoryId: selectedCategory._id })
+      Record.find({ userId, categoryId: selectedCategory._id })
         .lean()
         .then(renderRecords => {
           let totalAmount = 0
