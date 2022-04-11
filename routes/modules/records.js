@@ -24,4 +24,36 @@ router.post('/', (req, res) => {
   .catch(err => console.log("some error:", err))
 })
 
+router.get('/:id/edit', (req, res) => {
+  const _id = req.params.id
+  Record.findOne({ _id })
+  .lean()
+  .then( record => {
+    Category.find()
+    .lean()
+    .then(categories => {
+      categories.map( category => {
+        if (category._id.toString() === record.categoryId.toString()) {
+          return categoryName = category.name
+        }
+      })
+      res.render('edit', { record, categories, categoryName }) 
+    })
+  })
+  .catch(err => console.log('some error:', err))
+})
+
+router.put('/:id', (req, res) => {
+  const _id = req.params.id
+  const editRecord = req.body
+  Category.findOne({ name: req.body.category })
+    .lean()
+    .then((category) => {
+      editRecord.categoryId = category._id.toString()
+      return Record.findOneAndUpdate({ _id }, editRecord)
+    })
+    .then(() => res.redirect('/'))
+    .catch(err => console.log('some error:', err))
+})
+
 module.exports = router

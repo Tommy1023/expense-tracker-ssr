@@ -27,12 +27,11 @@
             <label for="category" class="form-label">類別*：</label>
           </div>
           <div class="col-6 d-flex justify-content-center">
-            <input type="text" class="form-control" id="category" name="category" placeholder="Select" list="optionList"
-              required='true'>
-            <datalist id="optionList">
+            <select class="form-select" aria-label="Default select example" name="category" required>
               {{#each categories}}
-              <option>{{this.name}}</option>
+              <option >{{this.name}}</option>
               {{/each}}
+            </select>
             </datalist>
           </div>
         </div>
