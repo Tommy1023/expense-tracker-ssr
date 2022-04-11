@@ -47,7 +47,7 @@ router.post('/register', (req, res) => {
         password: hash
       }))
       .then(() => {
-        // req.logout()
+        req.logout()
         res.redirect('/users/login')
       })
       .catch(err => console.log('some error:', err))
@@ -61,5 +61,9 @@ router.post('/login', passport.authenticate('local', {
   })
 )
 
+router.get('/logout', (req, res) => {
+  req.logOut()
+  res.redirect('/users/login')
+})
 
 module.exports = router
