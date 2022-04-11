@@ -44,6 +44,7 @@ router.get('/sort/:sort', (req, res) => {
       })
       Record.find({ userId, categoryId: selectedCategory._id })
         .lean()
+        .sort({ date: 'asc', name: 'asc' })
         .then(renderRecords => {
           let totalAmount = 0
           renderRecords.forEach(record => {
