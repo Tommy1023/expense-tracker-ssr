@@ -2,12 +2,14 @@ const express = require('express')
 const session = require('express-session')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
+const usePassport = require('./config/passport')
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 const routes = require('./routes')
 require('./config/mongoose')
+
 
 const app = express()
 const PORT = process.env.PORT
@@ -22,6 +24,9 @@ app.use(session({
 }))
 app.use(express.urlencoded({ extended: true })) //bodyParser
 app.use(methodOverride('_method'))
+
+usePassport(app)
+
 app.use(routes)
 
 app.listen(PORT, () => {
