@@ -1,6 +1,6 @@
 # favorite_restaurant
 
-![Register page about Restaurant List](./public/image/home.png)
+![Register page about Restaurant List](./public/image/Home.png)
 ![Register page about Restaurant List](./public/image/sort.png)
 ![Register page about Restaurant List](./public/image/new.png)
 ![Register page about Restaurant List](./public/image/edit.png)
